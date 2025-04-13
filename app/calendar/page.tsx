@@ -16,7 +16,7 @@ export default function Home() {
   const [reservations, setReservations] = useState<Reservation[]>([]);
 
   useEffect(() => {
-    fetch('../services/reservations')
+    fetch('../services/reservations.ts')
       .then(response => response.json())
       .then(data => setReservations(data));
   }, []);
@@ -40,7 +40,7 @@ export default function Home() {
       end: end.toISOString(),
     };
   
-    await fetch('../services/reservations', {
+    await fetch('../services/reservations.ts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,8 +52,7 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Reservation System</h1>
+    <div  >
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek" // Set initial view to timeGridWeek
